@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1>Poll Details</h1>
+  <div id="vote-message"></div>
+  <hr />
+  <h2>{{ poll.question }}</h2>
+  <form id="voteForm" data-poll-id="{{ poll.id }}">
+    {% csrf_token %} {% for choice in poll.choice_set.all %}
+    <input
+      type="radio"
+      name="choice"
+      id="choice{{ choice.id }}"
+      value="{{ choice.id }}"
+    />
+    <label for="choice{{ choice.id }}">{{ choice.choice_text }}</label><br />
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Vote</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#voteForm").on("submit", function (e) {
+      e.preventDefault(); // Prevent default form submission
+
+      var formData = $(this).serialize();
+      var pollId = $(this).data("poll-id");
+
+      $.ajax({
+        type: "POST",
+        url: '{% url "polls:vote" poll.id %}',
+        data: formData,
+        success: function (response) {
+          // Construct success message with choice name and percentage
+          var choiceText = $('input[name="choice"]:checked + label').text();
+          var message =
+            response.message +
+            " - " +
+            choiceText +
+            ": " +
+            response.choice_percentage +
+            "%";
+
+          $("#vote-message").html(
+            '<div class="alert alert-success">' + message + "</div>"
+          );
+
+          // Optionally, you can hide or disable the form after successful vote
+          $("#voteForm").hide();
+        },
+        error: function (xhr, status, error) {
+          var errorMessage = xhr.responseJSON.error;
+          $("#vote-message").html(
+            '<div class="alert alert-danger">' + errorMessage + "</div>"
+          );
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}
