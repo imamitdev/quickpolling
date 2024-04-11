@@ -37,6 +37,7 @@ This is a simple polling application built using Django that allows users to cre
   
   ```bash
     cd quick-polling-app
+
 3. Create a virtual environment:
 
   ```bash
