@@ -2,7 +2,10 @@
 
 This is a simple polling application built using Django that allows users to create, view, and participate in polls. The app implements user authentication, poll creation with choices, poll listing, participation, and result display with AJAX for a smoother user experience.
 
-<video src="https://github.com/imamitdev/quickpolling/blob/main/www_screencapture_com_2024-4-11_16_52.mp4" , controle=true></video>
+<video width="320" height="240" src="https://github.com/imamitdev/quickpolling/blob/main/www_screencapture_com_2024-4-11_16_52.mp4" controls>
+  <source src="https://github.com/imamitdev/quickpolling/blob/main/www_screencapture_com_2024-4-11_16_52.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Features
 
