@@ -2,6 +2,8 @@
 
 This is a simple polling application built using Django that allows users to create, view, and participate in polls. The app implements user authentication, poll creation with choices, poll listing, participation, and result display with AJAX for a smoother user experience.
 
+<video src="https://github.com/imamitdev/quickpolling/blob/main/www_screencapture_com_2024-4-11_16_52.mp4" , controle=true></video>
+
 ## Features
 
 - **User Authentication**
@@ -31,17 +33,17 @@ This is a simple polling application built using Django that allows users to cre
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/quick-polling-app.git
+     git clone https://github.com/yourusername/quick-polling-app.git
+   ```
 
 2. Navigate into the project directory:
   
   ```bash
     cd quick-polling-app
+  ```
 
 3. Create a virtual environment:
 
   ```bash
-      python3 -m venv venv
-
-
-
+    python3 -m venv venv
+  ```
